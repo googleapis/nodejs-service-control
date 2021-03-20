@@ -1,8 +1,8 @@
 {
-  "name": "undefined",
+  "name": "@google-cloud/service-control",
   "version": "0.1.0",
-  "description": "Servicecontrol client for Node.js",
-  "repository": "googleapis/nodejs-servicecontrol",
+  "description": "Service control client for Node.js",
+  "repository": "googleapis/nodejs-service-control",
   "license": "Apache-2.0",
   "author": "Google LLC",
   "main": "build/src/index.js",
@@ -19,8 +19,8 @@
     "google cloud platform",
     "google cloud",
     "cloud",
-    "google servicecontrol",
-    "servicecontrol",
+    "google service control",
+    "service control",
     "quota controller",
     "service controller"
   ],
@@ -62,6 +62,6 @@
     "webpack-cli": "^4.5.0"
   },
   "engines": {
-    "node": ">=v10.24.0"
+    "node": ">=v12.0.0"
   }
 }
