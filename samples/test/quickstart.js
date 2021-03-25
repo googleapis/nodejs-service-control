@@ -33,7 +33,8 @@ describe('Quickstart', () => {
     // We should get an error, since we don't have a DNS service
     // to test
     const stdout = execSync('node ./quickstart.js test-service', {
-        cwd,
-      });
+      cwd,
+    });
     console.log(`STDOUT: ${stdout}`);
+  });
 });
