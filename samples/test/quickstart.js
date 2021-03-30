@@ -30,14 +30,12 @@ const cwd = path.join(__dirname, '..');
 
 describe('Quickstart', () => {
   it('should run quickstart', async () => {
-    // We should get an error, since we don't have a DNS service
-    // to test
     const stdout = execSync(
       'node ./quickstart.js test-api-gateway-app-0zjurikbxiw0v.apigateway.long-door-651.cloud.goog',
       {
         cwd,
       }
     );
-    console.log(`STDOUT: ${stdout}`);
+    assert.match(stdout, /serviceConfigId/)
   });
 });
