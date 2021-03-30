@@ -36,6 +36,6 @@ describe('Quickstart', () => {
         cwd,
       }
     );
-    assert.match(stdout, /serviceConfigId/)
+    assert.match(stdout, /serviceConfigId/);
   });
 });
