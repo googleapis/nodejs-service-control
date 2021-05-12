@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.2.1](https://www.github.com/googleapis/nodejs-service-control/compare/v0.2.0...v0.2.1) (2021-05-12)
+
+
+### Bug Fixes
+
+* **deps:** require google-gax v2.12.0 ([#30](https://www.github.com/googleapis/nodejs-service-control/issues/30)) ([3981dd3](https://www.github.com/googleapis/nodejs-service-control/commit/3981dd39ed8a1b71c6de8dd26d5fdbd552167215))
+* use require() to load JSON protos ([#32](https://www.github.com/googleapis/nodejs-service-control/issues/32)) ([d9ac47d](https://www.github.com/googleapis/nodejs-service-control/commit/d9ac47d4651d9ad84c0ebe79900adb795c3c9861))
+
 ## 0.2.0 (2021-03-30)
 
 
