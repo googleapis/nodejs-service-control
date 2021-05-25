@@ -93,10 +93,13 @@ export class QuotaControllerClient {
   constructor(opts?: ClientOptions) {
     // Ensure that options include all the required fields.
     const staticMembers = this.constructor as typeof QuotaControllerClient;
-    const servicePath = opts?.servicePath || opts?.apiEndpoint || staticMembers.servicePath;
+    const servicePath =
+      opts?.servicePath || opts?.apiEndpoint || staticMembers.servicePath;
     const port = opts?.port || staticMembers.port;
     const clientConfig = opts?.clientConfig ?? {};
-    const fallback = opts?.fallback ?? (typeof window !== 'undefined' && typeof window?.fetch === 'function');
+    const fallback =
+      opts?.fallback ??
+      (typeof window !== 'undefined' && typeof window?.fetch === 'function');
     opts = Object.assign({servicePath, port, clientConfig, fallback}, opts);
 
     // If scopes are unset in options and we're connecting to a non-default endpoint, set scopes just in case.
@@ -114,7 +117,7 @@ export class QuotaControllerClient {
     this._opts = opts;
 
     // Save the auth object to the client, for use by other methods.
-    this.auth = (this._gaxGrpc.auth as gax.GoogleAuth);
+    this.auth = this._gaxGrpc.auth as gax.GoogleAuth;
 
     // Set the default scopes in auth client if needed.
     if (servicePath === staticMembers.servicePath) {
@@ -122,10 +125,7 @@ export class QuotaControllerClient {
     }
 
     // Determine the client header string.
-    const clientHeader = [
-      `gax/${this._gaxModule.version}`,
-      `gapic/${version}`,
-    ];
+    const clientHeader = [`gax/${this._gaxModule.version}`, `gapic/${version}`];
     if (typeof process !== 'undefined' && 'versions' in process) {
       clientHeader.push(`gl-node/${process.versions.node}`);
     } else {
@@ -133,7 +133,7 @@ export class QuotaControllerClient {
     }
     if (!opts.fallback) {
       clientHeader.push(`grpc/${this._gaxGrpc.grpcVersion}`);
-    } else if (opts.fallback === 'rest' ) {
+    } else if (opts.fallback === 'rest') {
       clientHeader.push(`rest/${this._gaxGrpc.grpcVersion}`);
     }
     if (opts.libName && opts.libVersion) {
@@ -144,8 +144,11 @@ export class QuotaControllerClient {
 
     // Put together the default options sent with requests.
     this._defaults = this._gaxGrpc.constructSettings(
-        'google.api.servicecontrol.v1.QuotaController', gapicConfig as gax.ClientConfig,
-        opts.clientConfig || {}, {'x-goog-api-client': clientHeader.join(' ')});
+      'google.api.servicecontrol.v1.QuotaController',
+      gapicConfig as gax.ClientConfig,
+      opts.clientConfig || {},
+      {'x-goog-api-client': clientHeader.join(' ')}
+    );
 
     // Set up a dictionary of "inner API calls"; the core implementation
     // of calling the API is handled in `google-gax`, with this code
@@ -173,16 +176,18 @@ export class QuotaControllerClient {
     // Put together the "service stub" for
     // google.api.servicecontrol.v1.QuotaController.
     this.quotaControllerStub = this._gaxGrpc.createStub(
-        this._opts.fallback ?
-          (this._protos as protobuf.Root).lookupService('google.api.servicecontrol.v1.QuotaController') :
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      this._opts.fallback
+        ? (this._protos as protobuf.Root).lookupService(
+            'google.api.servicecontrol.v1.QuotaController'
+          )
+        : // eslint-disable-next-line @typescript-eslint/no-explicit-any
           (this._protos as any).google.api.servicecontrol.v1.QuotaController,
-        this._opts) as Promise<{[method: string]: Function}>;
+      this._opts
+    ) as Promise<{[method: string]: Function}>;
 
     // Iterate over each of the methods that the service provides
     // and create an API call method for each.
-    const quotaControllerStubMethods =
-        ['allocateQuota'];
+    const quotaControllerStubMethods = ['allocateQuota'];
     for (const methodName of quotaControllerStubMethods) {
       const callPromise = this.quotaControllerStub.then(
         stub => (...args: Array<{}>) => {
@@ -192,12 +197,12 @@ export class QuotaControllerClient {
           const func = stub[methodName];
           return func.apply(stub, args);
         },
-        (err: Error|null|undefined) => () => {
+        (err: Error | null | undefined) => () => {
           throw err;
-        });
+        }
+      );
 
-      const descriptor =
-        undefined;
+      const descriptor = undefined;
       const apiCall = this._gaxModule.createApiCall(
         callPromise,
         this._defaults[methodName],
@@ -243,7 +248,7 @@ export class QuotaControllerClient {
   static get scopes() {
     return [
       'https://www.googleapis.com/auth/cloud-platform',
-      'https://www.googleapis.com/auth/servicecontrol'
+      'https://www.googleapis.com/auth/servicecontrol',
     ];
   }
 
@@ -253,8 +258,9 @@ export class QuotaControllerClient {
    * Return the project ID used by this class.
    * @returns {Promise} A promise that resolves to string containing the project ID.
    */
-  getProjectId(callback?: Callback<string, undefined, undefined>):
-      Promise<string>|void {
+  getProjectId(
+    callback?: Callback<string, undefined, undefined>
+  ): Promise<string> | void {
     if (callback) {
       this.auth.getProjectId(callback);
       return;
@@ -266,82 +272,103 @@ export class QuotaControllerClient {
   // -- Service calls --
   // -------------------
   allocateQuota(
-      request: protos.google.api.servicecontrol.v1.IAllocateQuotaRequest,
-      options?: CallOptions):
-      Promise<[
-        protos.google.api.servicecontrol.v1.IAllocateQuotaResponse,
-        protos.google.api.servicecontrol.v1.IAllocateQuotaRequest|undefined, {}|undefined
-      ]>;
+    request: protos.google.api.servicecontrol.v1.IAllocateQuotaRequest,
+    options?: CallOptions
+  ): Promise<
+    [
+      protos.google.api.servicecontrol.v1.IAllocateQuotaResponse,
+      protos.google.api.servicecontrol.v1.IAllocateQuotaRequest | undefined,
+      {} | undefined
+    ]
+  >;
   allocateQuota(
-      request: protos.google.api.servicecontrol.v1.IAllocateQuotaRequest,
-      options: CallOptions,
-      callback: Callback<
-          protos.google.api.servicecontrol.v1.IAllocateQuotaResponse,
-          protos.google.api.servicecontrol.v1.IAllocateQuotaRequest|null|undefined,
-          {}|null|undefined>): void;
+    request: protos.google.api.servicecontrol.v1.IAllocateQuotaRequest,
+    options: CallOptions,
+    callback: Callback<
+      protos.google.api.servicecontrol.v1.IAllocateQuotaResponse,
+      | protos.google.api.servicecontrol.v1.IAllocateQuotaRequest
+      | null
+      | undefined,
+      {} | null | undefined
+    >
+  ): void;
   allocateQuota(
-      request: protos.google.api.servicecontrol.v1.IAllocateQuotaRequest,
-      callback: Callback<
-          protos.google.api.servicecontrol.v1.IAllocateQuotaResponse,
-          protos.google.api.servicecontrol.v1.IAllocateQuotaRequest|null|undefined,
-          {}|null|undefined>): void;
-/**
- * Attempts to allocate quota for the specified consumer. It should be called
- * before the operation is executed.
- *
- * This method requires the `servicemanagement.services.quota`
- * permission on the specified service. For more information, see
- * [Cloud IAM](https://cloud.google.com/iam).
- *
- * **NOTE:** The client **must** fail-open on server errors `INTERNAL`,
- * `UNKNOWN`, `DEADLINE_EXCEEDED`, and `UNAVAILABLE`. To ensure system
- * reliability, the server may inject these errors to prohibit any hard
- * dependency on the quota functionality.
- *
- * @param {Object} request
- *   The request object that will be sent.
- * @param {string} request.serviceName
- *   Name of the service as specified in the service configuration. For example,
- *   `"pubsub.googleapis.com"`.
- *
- *   See {@link google.api.Service|google.api.Service} for the definition of a service name.
- * @param {google.api.servicecontrol.v1.QuotaOperation} request.allocateOperation
- *   Operation that describes the quota allocation.
- * @param {string} request.serviceConfigId
- *   Specifies which version of service configuration should be used to process
- *   the request. If unspecified or no matching version can be found, the latest
- *   one will be used.
- * @param {object} [options]
- *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
- * @returns {Promise} - The promise which resolves to an array.
- *   The first element of the array is an object representing [AllocateQuotaResponse]{@link google.api.servicecontrol.v1.AllocateQuotaResponse}.
- *   Please see the
- *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
- *   for more details and examples.
- * @example
- * const [response] = await client.allocateQuota(request);
- */
+    request: protos.google.api.servicecontrol.v1.IAllocateQuotaRequest,
+    callback: Callback<
+      protos.google.api.servicecontrol.v1.IAllocateQuotaResponse,
+      | protos.google.api.servicecontrol.v1.IAllocateQuotaRequest
+      | null
+      | undefined,
+      {} | null | undefined
+    >
+  ): void;
+  /**
+   * Attempts to allocate quota for the specified consumer. It should be called
+   * before the operation is executed.
+   *
+   * This method requires the `servicemanagement.services.quota`
+   * permission on the specified service. For more information, see
+   * [Cloud IAM](https://cloud.google.com/iam).
+   *
+   * **NOTE:** The client **must** fail-open on server errors `INTERNAL`,
+   * `UNKNOWN`, `DEADLINE_EXCEEDED`, and `UNAVAILABLE`. To ensure system
+   * reliability, the server may inject these errors to prohibit any hard
+   * dependency on the quota functionality.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.serviceName
+   *   Name of the service as specified in the service configuration. For example,
+   *   `"pubsub.googleapis.com"`.
+   *
+   *   See {@link google.api.Service|google.api.Service} for the definition of a service name.
+   * @param {google.api.servicecontrol.v1.QuotaOperation} request.allocateOperation
+   *   Operation that describes the quota allocation.
+   * @param {string} request.serviceConfigId
+   *   Specifies which version of service configuration should be used to process
+   *   the request. If unspecified or no matching version can be found, the latest
+   *   one will be used.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [AllocateQuotaResponse]{@link google.api.servicecontrol.v1.AllocateQuotaResponse}.
+   *   Please see the
+   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
+   *   for more details and examples.
+   * @example
+   * const [response] = await client.allocateQuota(request);
+   */
   allocateQuota(
-      request: protos.google.api.servicecontrol.v1.IAllocateQuotaRequest,
-      optionsOrCallback?: CallOptions|Callback<
+    request: protos.google.api.servicecontrol.v1.IAllocateQuotaRequest,
+    optionsOrCallback?:
+      | CallOptions
+      | Callback<
           protos.google.api.servicecontrol.v1.IAllocateQuotaResponse,
-          protos.google.api.servicecontrol.v1.IAllocateQuotaRequest|null|undefined,
-          {}|null|undefined>,
-      callback?: Callback<
-          protos.google.api.servicecontrol.v1.IAllocateQuotaResponse,
-          protos.google.api.servicecontrol.v1.IAllocateQuotaRequest|null|undefined,
-          {}|null|undefined>):
-      Promise<[
-        protos.google.api.servicecontrol.v1.IAllocateQuotaResponse,
-        protos.google.api.servicecontrol.v1.IAllocateQuotaRequest|undefined, {}|undefined
-      ]>|void {
+          | protos.google.api.servicecontrol.v1.IAllocateQuotaRequest
+          | null
+          | undefined,
+          {} | null | undefined
+        >,
+    callback?: Callback<
+      protos.google.api.servicecontrol.v1.IAllocateQuotaResponse,
+      | protos.google.api.servicecontrol.v1.IAllocateQuotaRequest
+      | null
+      | undefined,
+      {} | null | undefined
+    >
+  ): Promise<
+    [
+      protos.google.api.servicecontrol.v1.IAllocateQuotaResponse,
+      protos.google.api.servicecontrol.v1.IAllocateQuotaRequest | undefined,
+      {} | undefined
+    ]
+  > | void {
     request = request || {};
     let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    }
-    else {
+    } else {
       options = optionsOrCallback as CallOptions;
     }
     options = options || {};
@@ -350,12 +377,11 @@ export class QuotaControllerClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      'service_name': request.serviceName || '',
+      service_name: request.serviceName || '',
     });
     this.initialize();
     return this.innerApiCalls.allocateQuota(request, options, callback);
   }
-
 
   /**
    * Terminate the gRPC channel and close the client.

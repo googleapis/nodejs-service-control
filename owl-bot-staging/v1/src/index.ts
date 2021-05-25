@@ -24,4 +24,4 @@ type ServiceControllerClient = v1.ServiceControllerClient;
 export {v1, QuotaControllerClient, ServiceControllerClient};
 export default {v1, QuotaControllerClient, ServiceControllerClient};
 import * as protos from '../protos/protos';
-export {protos}
+export {protos};
