@@ -32,7 +32,7 @@ import * as gapicConfig from './quota_controller_client_config.json';
 const version = require('../../../package.json').version;
 
 /**
- *  [Google Quota Control API](https://cloud.google.com/service-control/overview)
+ *  [Google Quota Control API](/service-control/overview)
  *
  *  Allows clients to allocate and release quota against a [managed
  *  service](https://cloud.google.com/service-management/reference/rpc/google.api/servicemanagement.v1#google.api.servicemanagement.v1.ManagedService).
@@ -133,6 +133,8 @@ export class QuotaControllerClient {
     }
     if (!opts.fallback) {
       clientHeader.push(`grpc/${this._gaxGrpc.grpcVersion}`);
+    } else if (opts.fallback === 'rest') {
+      clientHeader.push(`rest/${this._gaxGrpc.grpcVersion}`);
     }
     if (opts.libName && opts.libVersion) {
       clientHeader.push(`${opts.libName}/${opts.libVersion}`);
@@ -271,7 +273,7 @@ export class QuotaControllerClient {
   // -- Service calls --
   // -------------------
   allocateQuota(
-    request: protos.google.api.servicecontrol.v1.IAllocateQuotaRequest,
+    request?: protos.google.api.servicecontrol.v1.IAllocateQuotaRequest,
     options?: CallOptions
   ): Promise<
     [
@@ -338,7 +340,7 @@ export class QuotaControllerClient {
    * const [response] = await client.allocateQuota(request);
    */
   allocateQuota(
-    request: protos.google.api.servicecontrol.v1.IAllocateQuotaRequest,
+    request?: protos.google.api.servicecontrol.v1.IAllocateQuotaRequest,
     optionsOrCallback?:
       | CallOptions
       | Callback<

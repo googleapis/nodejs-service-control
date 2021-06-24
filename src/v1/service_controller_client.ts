@@ -32,7 +32,7 @@ import * as gapicConfig from './service_controller_client_config.json';
 const version = require('../../../package.json').version;
 
 /**
- *  [Google Service Control API](https://cloud.google.com/service-control/overview)
+ *  [Google Service Control API](/service-control/overview)
  *
  *  Lets clients check and report operations against a [managed
  *  service](https://cloud.google.com/service-management/reference/rpc/google.api/servicemanagement.v1#google.api.servicemanagement.v1.ManagedService).
@@ -133,6 +133,8 @@ export class ServiceControllerClient {
     }
     if (!opts.fallback) {
       clientHeader.push(`grpc/${this._gaxGrpc.grpcVersion}`);
+    } else if (opts.fallback === 'rest') {
+      clientHeader.push(`rest/${this._gaxGrpc.grpcVersion}`);
     }
     if (opts.libName && opts.libVersion) {
       clientHeader.push(`${opts.libName}/${opts.libVersion}`);
@@ -271,7 +273,7 @@ export class ServiceControllerClient {
   // -- Service calls --
   // -------------------
   check(
-    request: protos.google.api.servicecontrol.v1.ICheckRequest,
+    request?: protos.google.api.servicecontrol.v1.ICheckRequest,
     options?: CallOptions
   ): Promise<
     [
@@ -309,7 +311,8 @@ export class ServiceControllerClient {
    * propagation, therefore callers MUST NOT depend on the `Check` method having
    * the latest policy information.
    *
-   * NOTE: the {@link google.api.servicecontrol.v1.CheckRequest|CheckRequest} has the size limit of 64KB.
+   * NOTE: the {@link google.api.servicecontrol.v1.CheckRequest|CheckRequest} has
+   * the size limit (wire-format byte size) of 1MB.
    *
    * This method requires the `servicemanagement.services.check` permission
    * on the specified service. For more information, see
@@ -343,7 +346,7 @@ export class ServiceControllerClient {
    * const [response] = await client.check(request);
    */
   check(
-    request: protos.google.api.servicecontrol.v1.ICheckRequest,
+    request?: protos.google.api.servicecontrol.v1.ICheckRequest,
     optionsOrCallback?:
       | CallOptions
       | Callback<
@@ -382,7 +385,7 @@ export class ServiceControllerClient {
     return this.innerApiCalls.check(request, options, callback);
   }
   report(
-    request: protos.google.api.servicecontrol.v1.IReportRequest,
+    request?: protos.google.api.servicecontrol.v1.IReportRequest,
     options?: CallOptions
   ): Promise<
     [
@@ -418,8 +421,8 @@ export class ServiceControllerClient {
    * the aggregation time window to avoid data loss risk more than 0.01%
    * for business and compliance reasons.
    *
-   * NOTE: the {@link google.api.servicecontrol.v1.ReportRequest|ReportRequest} has the size limit (wire-format byte size) of
-   * 1MB.
+   * NOTE: the {@link google.api.servicecontrol.v1.ReportRequest|ReportRequest} has
+   * the size limit (wire-format byte size) of 1MB.
    *
    * This method requires the `servicemanagement.services.report` permission
    * on the specified service. For more information, see
@@ -444,7 +447,8 @@ export class ServiceControllerClient {
    *
    *   There is no limit on the number of operations in the same ReportRequest,
    *   however the ReportRequest size should be no larger than 1MB. See
-   *   {@link google.api.servicecontrol.v1.ReportResponse.report_errors|ReportResponse.report_errors} for partial failure behavior.
+   *   {@link google.api.servicecontrol.v1.ReportResponse.report_errors|ReportResponse.report_errors}
+   *   for partial failure behavior.
    * @param {string} request.serviceConfigId
    *   Specifies which version of service config should be used to process the
    *   request.
@@ -462,7 +466,7 @@ export class ServiceControllerClient {
    * const [response] = await client.report(request);
    */
   report(
-    request: protos.google.api.servicecontrol.v1.IReportRequest,
+    request?: protos.google.api.servicecontrol.v1.IReportRequest,
     optionsOrCallback?:
       | CallOptions
       | Callback<
