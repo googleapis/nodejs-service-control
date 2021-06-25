@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.1](https://www.github.com/googleapis/nodejs-service-control/compare/v1.0.0...v1.0.1) (2021-06-25)
+
+
+### Bug Fixes
+
+* add dependency log_severity.proto ([#48](https://www.github.com/googleapis/nodejs-service-control/issues/48)) ([d7c32ff](https://www.github.com/googleapis/nodejs-service-control/commit/d7c32ff39298b466d72827934dea46da783fcfbe))
+
 ## [1.0.0](https://www.github.com/googleapis/nodejs-service-control/compare/v0.2.0...v1.0.0) (2021-05-19)
 
 
