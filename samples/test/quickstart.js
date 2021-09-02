@@ -30,12 +30,9 @@ const cwd = path.join(__dirname, '..');
 
 describe('Quickstart', () => {
   it('should run quickstart', async () => {
-    const stdout = execSync(
-      'node ./quickstart.js long-door-651.appspot.com',
-      {
-        cwd,
-      }
-    );
+    const stdout = execSync('node ./quickstart.js long-door-651.appspot.com', {
+      cwd,
+    });
     assert.match(stdout, /serviceConfigId/);
   });
 });
