@@ -353,6 +353,10 @@ export class QuotaControllerClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.allocateQuota(request);
+   *
+   * @example <caption>include:samples/generated/v1/quota_controller.allocate_quota.js</caption>
+   * region_tag:servicecontrol_allocate_quota_sample
+   *
    */
   allocateQuota(
     request?: protos.google.api.servicecontrol.v1.IAllocateQuotaRequest,
