@@ -12,5 +12,5 @@
   "name_pretty": "Service Control API",
   "repo": "googleapis/nodejs-service-control",
   "api_shortname": "service-control",
-  "library_type": ""
+  "library_type": "GAPIC_AUTO"
 }
