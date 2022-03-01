@@ -1,0 +1,4 @@
+[
+  "../../protos/google/api/servicecontrol/v2/service_controller.proto",
+  "../../protos/google/rpc/context/attribute_context.proto"
+]
