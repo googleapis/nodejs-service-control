@@ -5285,7 +5285,7 @@ export namespace google {
                 namespace QuotaController {
 
                     /**
-                     * Callback as used by {@link google.api.servicecontrol.v1.QuotaController|allocateQuota}.
+                     * Callback as used by {@link google.api.servicecontrol.v1.QuotaController#allocateQuota}.
                      * @param error Error, if any
                      * @param [response] AllocateQuotaResponse
                      */
@@ -5808,14 +5808,14 @@ export namespace google {
                 namespace ServiceController {
 
                     /**
-                     * Callback as used by {@link google.api.servicecontrol.v1.ServiceController|check}.
+                     * Callback as used by {@link google.api.servicecontrol.v1.ServiceController#check}.
                      * @param error Error, if any
                      * @param [response] CheckResponse
                      */
                     type CheckCallback = (error: (Error|null), response?: google.api.servicecontrol.v1.CheckResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.api.servicecontrol.v1.ServiceController|report}.
+                     * Callback as used by {@link google.api.servicecontrol.v1.ServiceController#report}.
                      * @param error Error, if any
                      * @param [response] ReportResponse
                      */
@@ -6610,14 +6610,14 @@ export namespace google {
                 namespace ServiceController {
 
                     /**
-                     * Callback as used by {@link google.api.servicecontrol.v2.ServiceController|check}.
+                     * Callback as used by {@link google.api.servicecontrol.v2.ServiceController#check}.
                      * @param error Error, if any
                      * @param [response] CheckResponse
                      */
                     type CheckCallback = (error: (Error|null), response?: google.api.servicecontrol.v2.CheckResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.api.servicecontrol.v2.ServiceController|report}.
+                     * Callback as used by {@link google.api.servicecontrol.v2.ServiceController#report}.
                      * @param error Error, if any
                      * @param [response] ReportResponse
                      */

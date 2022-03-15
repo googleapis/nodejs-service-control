@@ -14509,7 +14509,7 @@
                         };
     
                         /**
-                         * Callback as used by {@link google.api.servicecontrol.v1.QuotaController|allocateQuota}.
+                         * Callback as used by {@link google.api.servicecontrol.v1.QuotaController#allocateQuota}.
                          * @memberof google.api.servicecontrol.v1.QuotaController
                          * @typedef AllocateQuotaCallback
                          * @type {function}
@@ -15837,7 +15837,7 @@
                         };
     
                         /**
-                         * Callback as used by {@link google.api.servicecontrol.v1.ServiceController|check}.
+                         * Callback as used by {@link google.api.servicecontrol.v1.ServiceController#check}.
                          * @memberof google.api.servicecontrol.v1.ServiceController
                          * @typedef CheckCallback
                          * @type {function}
@@ -15870,7 +15870,7 @@
                          */
     
                         /**
-                         * Callback as used by {@link google.api.servicecontrol.v1.ServiceController|report}.
+                         * Callback as used by {@link google.api.servicecontrol.v1.ServiceController#report}.
                          * @memberof google.api.servicecontrol.v1.ServiceController
                          * @typedef ReportCallback
                          * @type {function}
@@ -17752,7 +17752,7 @@
                         };
     
                         /**
-                         * Callback as used by {@link google.api.servicecontrol.v2.ServiceController|check}.
+                         * Callback as used by {@link google.api.servicecontrol.v2.ServiceController#check}.
                          * @memberof google.api.servicecontrol.v2.ServiceController
                          * @typedef CheckCallback
                          * @type {function}
@@ -17785,7 +17785,7 @@
                          */
     
                         /**
-                         * Callback as used by {@link google.api.servicecontrol.v2.ServiceController|report}.
+                         * Callback as used by {@link google.api.servicecontrol.v2.ServiceController#report}.
                          * @memberof google.api.servicecontrol.v2.ServiceController
                          * @typedef ReportCallback
                          * @type {function}
