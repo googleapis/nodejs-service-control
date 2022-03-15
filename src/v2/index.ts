@@ -16,11 +16,4 @@
 // ** https://github.com/googleapis/gapic-generator-typescript **
 // ** All changes to this file may be overwritten. **
 
-/* eslint-disable node/no-missing-require, no-unused-vars */
-const servicecontrol = require('@google-cloud/servicecontrol');
-
-function main() {
-  const serviceControllerClient = new servicecontrol.ServiceControllerClient();
-}
-
-main();
+export {ServiceControllerClient} from './service_controller_client';
